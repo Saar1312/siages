@@ -1,0 +1,374 @@
+timestamp: 2016-02-19T13:04:00.880659
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2016-02-19T13:04:00.996299
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-02-19T13:04:01.108297
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2016-02-19T13:04:01.232173
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  ,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2016-02-19T13:04:01.366286
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-02-19T13:04:01.511909
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2016-02-19T13:04:01.678872
+CREATE TABLE empleadoArlyn(
+    nombre CHAR(512),
+    apellido CHAR(512),
+    identificador CHAR(512) NOT NULL,
+    cargo CHAR(512),
+    tlf CHAR(512),
+    PRIMARY KEY(identificador)) ;
+success!
+timestamp: 2016-02-19T13:04:01.824950
+CREATE TABLE inventario(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    material CHAR(512),
+    cantidad DOUBLE
+);
+success!
+timestamp: 2016-02-19T13:04:01.947352
+CREATE TABLE edificio(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre CHAR(512),
+    nomenclatura CHAR(512)
+);
+success!
+timestamp: 2016-02-19T13:04:02.070702
+CREATE TABLE lugar(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    edificio INTEGER REFERENCES edificio (id) ON DELETE CASCADE  ,
+    espacio CHAR(512),
+    referencia CHAR(512),
+    extension_tlf INTEGER
+);
+success!
+timestamp: 2016-02-19T13:04:02.193717
+CREATE TABLE area(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre CHAR(512),
+    nomenclatura CHAR(512)
+);
+success!
+timestamp: 2016-02-19T13:04:02.340268
+CREATE TABLE supervisor(
+    area INTEGER REFERENCES area (id) ON DELETE CASCADE  ,
+    nombre CHAR(512),
+    apellido CHAR(512),
+    identificador CHAR(512) NOT NULL,
+    PRIMARY KEY(identificador)) ;
+success!
+timestamp: 2016-02-19T13:04:02.475853
+CREATE TABLE unidad(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre CHAR(512) UNIQUE
+);
+success!
+timestamp: 2016-02-19T13:04:02.598671
+CREATE TABLE estatus_solicitud(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre_estatus CHAR(512) UNIQUE
+);
+success!
+timestamp: 2016-02-19T13:04:02.744011
+CREATE TABLE prioridad(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre_prioridad CHAR(512) UNIQUE
+);
+success!
+timestamp: 2016-02-19T13:04:02.900619
+CREATE TABLE espacio(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre_espacio CHAR(512) UNIQUE
+);
+success!
+timestamp: 2016-02-19T13:04:03.057240
+CREATE TABLE Materiales(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Nombre CHAR(512) UNIQUE,
+    Especificacion TEXT,
+    Status CHAR(512),
+    Unidad_de_Medida CHAR(512),
+    Area CHAR(512),
+    Cantidad INTEGER,
+    Cantidad_Minima INTEGER
+);
+success!
+timestamp: 2016-02-19T13:04:03.181916
+CREATE TABLE Empleado(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Nombre CHAR(512),
+    Cedula DOUBLE UNIQUE,
+    USBID TEXT,
+    Correo CHAR(512),
+    Telefono CHAR(512),
+    Cargo CHAR(512),
+    Experticia CHAR(512),
+    Estado CHAR(512)
+);
+success!
+timestamp: 2016-02-19T13:04:03.315004
+CREATE TABLE emails(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    correo CHAR(512),
+    asunto CHAR(512),
+    mensaje TEXT
+);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2016-02-21T23:40:31.046488
+CREATE TABLE MaterialesAsignados(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Nombre CHAR(512) UNIQUE,
+    Especificacion TEXT,
+    Status CHAR(512),
+    Unidad_de_Medida CHAR(512),
+    Area CHAR(512),
+    Cantidad INTEGER,
+    Cantidad_Minima INTEGER
+);
+success!
+success!
+timestamp: 2016-02-21T23:41:30.823117
+CREATE TABLE Solicitud(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Nombre CHAR(512) UNIQUE,
+    Especificacion TEXT,
+    Status CHAR(512),
+    Unidad_de_Medida CHAR(512),
+    Area CHAR(512),
+    Cantidad INTEGER,
+    Cantidad_Minima INTEGER
+);
+success!
+timestamp: 2016-02-21T23:41:31.008027
+ALTER TABLE MaterialesAsignados ADD materiales_id INTEGER;
+success!
+success!
+timestamp: 2016-02-21T23:42:30.848717
+ALTER TABLE MaterialesAsignados ADD solicitud_id INTEGER;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2016-02-21T23:45:30.872846
+CREATE TABLE EmpleadosAsignados(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Empleado_id INTEGER,
+    Solicitud_id INTEGER
+);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!

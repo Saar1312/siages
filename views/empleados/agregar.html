@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+{{block content}}
+<div class="row">
+    <div class="page-header">
+        <h1 class="text-primary text-center col-sm-8">Agregar Empleado</h1>
+        <a class="btn btn-primary col-sm-4" href='/{{=request.application}}/{{=request.controller}}/listar'>Empleados</a>
+    </div>
+</div>
+<br /><br />
+{{=form}}
+{{end}}

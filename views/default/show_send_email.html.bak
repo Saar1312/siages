@@ -1,0 +1,7 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,False}}
+{{extend 'layout.html'}}
+
+<h3>Enviar correo electrónico</h3>
+<div>
+{{=form}}
+</div>
